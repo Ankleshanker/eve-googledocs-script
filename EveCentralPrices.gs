@@ -31,7 +31,7 @@ https://docs.google.com/spreadsheets/d/1f9-4cb4Tx64Do-xmHhELSwZGahZ2mTTkV7mKDBRP
 
 */
 /*
-* Loads prices for a given set of typeIDs for a specific region using Eve-Central's data.
+* Loads prices for a given set of typeIDs for a specific region using evemarketer's data.
 * @param priceIDs A range where the item typeIDs are found.
 * @param regionID The region to query.
 * @param {number} cachebuster Increment this variable to refresh the data.
@@ -51,7 +51,7 @@ function loadRegionPrices(priceIDs,regionID,cachebuster){
   var prices = new Array();
   var dirtyTypeIds = new Array();
   var cleanTypeIds = new Array();
-  var url="http://api.eve-central.com/api/marketstat?cachebuster="+cachebuster+"&regionlimit="+regionID+"&typeid=";
+  var url="https://api.evemarketer.com/ec/marketstat?useregion="+regionID+"&typeid=";
   priceIDs.forEach (function (row) {
     row.forEach ( function (cell) {
       if (typeof(cell) === 'number' ) {
@@ -116,7 +116,7 @@ function loadSystemPrices(priceIDs,systemID,cachebuster){
   var prices = new Array();
   var dirtyTypeIds = new Array();
   var cleanTypeIds = new Array();
-  var url="http://api.eve-central.com/api/marketstat?cachebuster="+cachebuster+"&usesystem="+systemID+"&typeid=";
+  var url="https://api.evemarketer.com/ec/marketstat?usesystem="+systemID+"&typeid=";
   priceIDs.forEach (function (row) {
     row.forEach ( function (cell) {
       if (typeof(cell) === 'number' ) {
